@@ -45,7 +45,7 @@ Copyright: Chengwei Luo, Konstantinidis Lab, Georgia Institute of Technology, 20
 
 import sys
 import os
-import urllib2
+import urllib.request, urllib.error, urllib.parse
 
 
 url = "http://enve-omics.ce.gatech.edu/mytaxa/db/db.latest.tar.gz"
@@ -53,15 +53,15 @@ dir = './'
 
 file_name = dir + url.split('/')[-1]
 try:
-	u = urllib2.urlopen(url)
+	u = urllib.request.urlopen(url)
 except:
 	url = "http://enve-omics.ce.gatech.edu/mytaxa/db/db.latest.tar.gz"
-	u = urllib2.urlopen(url)
+	u = urllib.request.urlopen(url)
 
 f = open(file_name, 'wb')
 meta = u.info()
-file_size = int(meta.getheaders("Content-Length")[0])
-print "Downloading: %s Bytes: %s" % (file_name, file_size)
+file_size = int(meta.get("Content-Length")[0])
+print("Downloading: %s Bytes: %s" % (file_name, file_size))
 
 file_size_dl = 0
 block_sz = 8192
@@ -74,9 +74,9 @@ while True:
     f.write(buffer)
     status = r"%10d  [%3.2f%%]" % (file_size_dl, file_size_dl * 100. / file_size)
     status = status + chr(8)*(len(status)+1)
-    print status,
+    print(status, end=' ')
 f.close()
-print ""
+print("")
 
 os.system('tar xzvf db.latest.tar.gz --directory '+os.path.dirname(sys.argv[0])+'/../')
 
