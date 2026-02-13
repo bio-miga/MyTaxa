@@ -83,7 +83,15 @@ public:
 	void initDBFiles(char *progPath){
 		string progString = string(progPath);
 		unsigned int pos = progString.rfind("/");
-		string dbPathString = progString.substr(0, pos) + "/db/";
+		string dbPathString;
+                if (const char* env_db = std::getenv("MYTAXA_DB")) {
+                        if (*env_db != '\0') {
+                                dbPathString = std::string(env_db) + "/";
+                        }
+                }
+                if (dbPathString.empty()) {
+                        dbPathString = progString.substr(0, pos) + "/db/";
+                }
 		string taxonTreeFileString = dbPathString + "ncbiNodes.lib";
 		string taxonSciNameFileString = dbPathString + "ncbiSciNames.lib";
 		string geneTaxonFileString = dbPathString + "geneTaxon.lib";
