@@ -24,7 +24,7 @@
 #endif
 
 #define VERSION_NUMBER 1
-#define RELEASE_NUMBER 0
+#define RELEASE_NUMBER 1
 #define UPDATE_NUMBER 0
 
 // weights

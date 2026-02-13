@@ -21,11 +21,11 @@ using namespace std;
 void printUsage()
 {
 	cout << "#############################################################################################" << endl;
-	cout << "MeTaxa: an advanced taxonomy classifier for metagenomic and genomic sequences" <<endl;
+	cout << "MyTaxa: an advanced taxonomy classifier for metagenomic and genomic sequences" <<endl;
 	cout << "Version: " << VERSION_NUMBER << ".";
 	cout << RELEASE_NUMBER << "." << UPDATE_NUMBER << endl;
 	cout << "Usage:" << endl;
-	cout << "MeTaxa <input file> <output file> <score cutoff>";
+	cout << "MyTaxa <input file> <output file> <score cutoff>";
 	cout << "## [Format of input file]:" << endl;
 	cout << "\tBased on blast -m 8 output format, for each blast-like output line," << endl;
 	cout << "\tadd additional 3 tab delimited columns to each line:" << endl;
